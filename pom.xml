@@ -39,7 +39,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>Main</mainClass>
+                    <mainClass>src.main.java.Main</mainClass>
                 </configuration>
             </plugin>
 
