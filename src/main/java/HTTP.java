@@ -5,9 +5,9 @@ import com.google.gson.JsonObject;
 import static spark.Spark.port;
 import static spark.Spark.post;
 
-public class HTTP {
+class HTTP {
 	
-	public HTTP(){
+	HTTP(){
 		port(8080);
 		
 		/*
@@ -16,6 +16,7 @@ public class HTTP {
 		}
 		 */
 		post("/App1/new", ((request, response) -> {
+			System.out.println(request.body());
 			JsonObject bodyObject = JSON.parseStringToJSON(request.body());
 			String name = bodyObject.get("name").getAsString();
 			

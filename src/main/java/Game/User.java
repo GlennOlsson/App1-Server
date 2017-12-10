@@ -2,6 +2,7 @@ package Game;
 
 import com.google.gson.JsonObject;
 
+@SuppressWarnings("CanBeFinal")
 public class User implements Comparable<User>{
 	private String name;
 	private Integer score;

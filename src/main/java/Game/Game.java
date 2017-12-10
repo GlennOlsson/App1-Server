@@ -189,7 +189,7 @@ public class Game {
 		}
 	}
 	
-	public  static String generateToken(String name){
+	private static String generateToken(String name){
 		StringBuilder token = new StringBuilder();
 		long currentMillis = System.currentTimeMillis();
 		//Removing everything but the last 5 characters, as they are almost random
@@ -250,9 +250,8 @@ public class Game {
 	
 	private static String beautifyJSON(JsonObject json){
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		String beautyJSON = gson.toJson(json);
 		
-		return beautyJSON;
+		return gson.toJson(json);
 	}
 	
 }

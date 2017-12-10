@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 
 public class FileHandling {
 	
-	public static String USERS_FILE = "Users.json";
+	public static final String USERS_FILE = "Users.json";
 	
 	/**
 	 * Returns the content of the file as a string, utilizing java.nio
@@ -29,6 +29,7 @@ public class FileHandling {
 			Files.write(Paths.get(getPath() + fileName), content.getBytes());
 		}
 		catch (Exception e){
+			System.err.println("Could not save file");
 		}
 	}
 	
