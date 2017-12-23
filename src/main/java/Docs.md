@@ -30,7 +30,7 @@ Successfully created user. Token is in return body
 ### 401
 User with that name already exists
 
-### 403
+### 402
 Name field was empty
 
 ### 550

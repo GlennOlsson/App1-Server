@@ -8,7 +8,6 @@ import spark.Response;
 
 import static Backend.FileHandling.*;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -20,6 +19,7 @@ public class Game {
 		try {
 			if(token.length() == 0) {
 				response.status(402);
+				response.body(Integer.toString(response.status()));
 				return response;
 			}
 			
@@ -40,6 +40,7 @@ public class Game {
 			if(userOfToken.toString().equals("{}")){
 				//No user with token found
 				response.status(401);
+				response.body(Integer.toString(response.status()));
 				return response;
 			}
 			//Else
@@ -60,10 +61,13 @@ public class Game {
 		}
 		catch (IOException e){
 			response.status(555);
+			response.body(Integer.toString(response.status()));
 			return response;
 		}
 		catch (Exception e){
 			response.status(550);
+			response.body(Integer.toString(response.status()));
+			e.printStackTrace();
 			return response;
 		}
 	}
@@ -72,6 +76,7 @@ public class Game {
 		try{
 			if(token.length() == 0 || score < 0){
 				response.status(402);
+				response.body(Integer.toString(response.status()));
 				return response;
 			}
 			
@@ -92,6 +97,7 @@ public class Game {
 			if(userOfToken.toString().equals("{}")){
 				//No user with token found
 				response.status(401);
+				response.body(Integer.toString(response.status()));
 				return response;
 			}
 			
@@ -118,10 +124,14 @@ public class Game {
 		}
 		catch (IOException e){
 			response.status(555);
+			response.body(Integer.toString(response.status()));
 			return response;
 		}
 		catch (Exception e){
 			response.status(550);
+			response.body(Integer.toString(response.status()));
+			
+			e.printStackTrace();
 			return response;
 		}
 	}
@@ -131,6 +141,7 @@ public class Game {
 			
 			if(name.length() == 0){
 				response.status(402);
+				response.body(Integer.toString(response.status()));
 				return response;
 			}
 			
@@ -144,6 +155,7 @@ public class Game {
 				if(thisName.equals(name)){
 					//Already exists a user with that name, the name must be unique
 					response.status(401);
+					response.body("401");
 					return response;
 				}
 			}
@@ -181,10 +193,12 @@ public class Game {
 		}
 		catch (IOException e){
 			response.status(555);
+			response.body(Integer.toString(response.status()));
 			return response;
 		}
 		catch (Exception e){
 			response.status(550);
+			response.body(Integer.toString(response.status()));
 			return response;
 		}
 	}

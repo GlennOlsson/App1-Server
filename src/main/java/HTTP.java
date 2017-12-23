@@ -8,7 +8,7 @@ import static spark.Spark.post;
 class HTTP {
 	
 	HTTP(){
-		port(8080);
+		port(8181);
 		
 		/*
 		{
@@ -16,11 +16,14 @@ class HTTP {
 		}
 		 */
 		post("/App1/new", ((request, response) -> {
-			System.out.println(request.body());
+			System.out.println("/new : " + request.body());
 			JsonObject bodyObject = JSON.parseStringToJSON(request.body());
 			String name = bodyObject.get("name").getAsString();
 			
 			response = Game.createUser(name, response);
+			
+			System.out.println("Responding with: " + response.status() + ", " + response.body());
+			System.out.println();
 			
 			return response.body();
 		}));
@@ -32,11 +35,21 @@ class HTTP {
 		}
 		 */
 		post("/App1/update", ((request, response) -> {
-			JsonObject bodyObject = JSON.parseStringToJSON(request.body());
-			String token = bodyObject.get("token").getAsString();
-			int score = bodyObject.get("score").getAsInt();
+			try{
+				
+				System.out.println("/update : " + request.body());
+				JsonObject bodyObject = JSON.parseStringToJSON(request.body());
+				String token = bodyObject.get("token").getAsString();
+				int score = bodyObject.get("score").getAsInt();
+				
+				response = Game.updateScore(token, score, response);
+			}
+			catch (Exception e){
+				e.printStackTrace();
+			}
 			
-			response = Game.updateScore(token, score, response);
+			System.out.println("Responding with: " + response.status() + ", " + response.body());
+			System.out.println();
 			
 			return response.body();
 		}));
@@ -47,10 +60,14 @@ class HTTP {
 		}
 		 */
 		post("/App1/start", (((request, response) -> {
+			System.out.println("/start : " + request.body());
 			JsonObject bodyObject = JSON.parseStringToJSON(request.body());
 			String token = bodyObject.get("token").getAsString();
 			
 			response = Game.startUpdate(token, response);
+			
+			System.out.println("Responding with: " + response.status() + ", " + response.body());
+			System.out.println();
 			
 			return response.body();
 		})));

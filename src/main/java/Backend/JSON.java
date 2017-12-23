@@ -1,10 +1,6 @@
 package Backend;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
-
+import com.google.gson.*;
 public class JSON {
 	/**
 	 * Parses an input string as a JSON object
@@ -12,7 +8,9 @@ public class JSON {
 	 * @return the object of the string
 	 */
 	public static JsonObject parseStringToJSON(String theString) throws JsonSyntaxException {
-		JsonElement jElement = new JsonParser().parse(theString);
-		return jElement.getAsJsonObject();
+		JsonElement jsonElement = new JsonParser().parse(theString.trim());
+		JsonObject jsonObject = jsonElement.getAsJsonObject();
+		
+		return jsonObject;
 	}
 }
