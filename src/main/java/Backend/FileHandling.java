@@ -35,7 +35,8 @@ public class FileHandling {
 	
 	private static String getPath(){
 		if(System.getProperty("os.name").toLowerCase().contains("linux")) {
-			return "/NAS/NASDisk/Glenn/App1/";
+			//Only works on Tau
+			return "/NAS/Glenn/App1/";
 		}
 		else if(System.getProperty("os.name").toLowerCase().contains("mac os x")) {
 			return "/Volumes/NASDisk/Glenn/App1/";
