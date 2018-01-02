@@ -1,4 +1,5 @@
 import Backend.JSON;
+import Backend.Logger;
 import Game.Game;
 import com.google.gson.JsonObject;
 
@@ -16,14 +17,22 @@ class HTTP {
 		}
 		 */
 		post("/new", ((request, response) -> {
-			System.out.println("/new : " + request.body());
-			JsonObject bodyObject = JSON.parseStringToJSON(request.body());
-			String name = bodyObject.get("name").getAsString();
+			try{
+				Logger.print("/new : " + request.body());
+				JsonObject bodyObject = JSON.parseStringToJSON(request.body());
+				String name = bodyObject.get("name").getAsString();
+				
+				response = Game.createUser(name, response);
+				
+				Logger.print("Responding with: " + response.status() + ", " + response.body());
+			}
+			catch (Exception e){
+				Logger.logError(e, "Error with /new", "Unknown error");
+				response.status(560);
+				response.body(Integer.toString(response.status()));
+			}
 			
-			response = Game.createUser(name, response);
-			
-			System.out.println("Responding with: " + response.status() + ", " + response.body());
-			System.out.println();
+			Logger.print("Responding with: " + response.status() + ", " + response.body());
 			
 			return response.body();
 		}));
@@ -36,8 +45,7 @@ class HTTP {
 		 */
 		post("/update", ((request, response) -> {
 			try{
-				
-				System.out.println("/update : " + request.body());
+				Logger.print("/update : " + request.body());
 				JsonObject bodyObject = JSON.parseStringToJSON(request.body());
 				String token = bodyObject.get("token").getAsString();
 				int score = bodyObject.get("score").getAsInt();
@@ -45,11 +53,12 @@ class HTTP {
 				response = Game.updateScore(token, score, response);
 			}
 			catch (Exception e){
-				e.printStackTrace();
+				Logger.logError(e, "Error with /update", "Unknown error");
+				response.status(560);
+				response.body(Integer.toString(response.status()));
 			}
 			
-			System.out.println("Responding with: " + response.status() + ", " + response.body());
-			System.out.println();
+			Logger.print("Responding with: " + response.status() + ", " + response.body());
 			
 			return response.body();
 		}));
@@ -60,18 +69,25 @@ class HTTP {
 		}
 		 */
 		post("/start", (((request, response) -> {
-			System.out.println("/start : " + request.body());
-			JsonObject bodyObject = JSON.parseStringToJSON(request.body());
-			String token = bodyObject.get("token").getAsString();
+			try{
+				Logger.print("/start : " + request.body());
+				JsonObject bodyObject = JSON.parseStringToJSON(request.body());
+				String token = bodyObject.get("token").getAsString();
+				
+				response = Game.startUpdate(token, response);
+				
+				Logger.print("Responding with: " + response.status() + ", " + response.body());
+			}
+			catch (Exception e){
+				Logger.logError(e, "Error with /start", "Unknown error");
+				response.status(560);
+				response.body(Integer.toString(response.status()));
+			}
 			
-			response = Game.startUpdate(token, response);
-			
-			System.out.println("Responding with: " + response.status() + ", " + response.body());
-			System.out.println();
+			Logger.print("Responding with: " + response.status() + ", " + response.body());
 			
 			return response.body();
 		})));
-		
 	}
 	
 }

@@ -39,6 +39,9 @@ General exception
 ### 555
 IOException
 
+### 560
+General exception in HTTP communication (when everything else fails)
+
 ## /update
 ### 200
 Successfully updated score. Return body is highscore
@@ -58,6 +61,9 @@ General exception
 ### 555
 IOException
 
+### 560
+General exception in HTTP communication (when everything else fails)
+
 ## /start
 ### 200
 Successfully updated start value
@@ -73,3 +79,6 @@ General exception
 
 ### 555
 IOException
+
+### 560
+General exception in HTTP communication (when everything else fails)

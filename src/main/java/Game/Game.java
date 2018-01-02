@@ -3,6 +3,7 @@ package Game;
 import Backend.FileHandling;
 import Backend.Highscore;
 import Backend.JSON;
+import Backend.Logger;
 import com.google.gson.*;
 import spark.Response;
 
@@ -62,12 +63,14 @@ public class Game {
 		catch (IOException e){
 			response.status(555);
 			response.body(Integer.toString(response.status()));
+			response.body(Integer.toString(response.status()));
+			Logger.logError(e, "Error in startUpdate()", "IOException");
 			return response;
 		}
 		catch (Exception e){
 			response.status(550);
 			response.body(Integer.toString(response.status()));
-			e.printStackTrace();
+			Logger.logError(e, "Error in startUpdate()", "General exception");
 			return response;
 		}
 	}
@@ -101,7 +104,7 @@ public class Game {
 				return response;
 			}
 			
-			System.out.println(userOfToken.toString());
+			Logger.print(userOfToken.toString());
 			
 			int scoreOfUser = userOfToken.get("score").getAsInt();
 			
@@ -125,13 +128,14 @@ public class Game {
 		catch (IOException e){
 			response.status(555);
 			response.body(Integer.toString(response.status()));
+			Logger.logError(e, "Error in updateScore()", "IOException");
 			return response;
 		}
 		catch (Exception e){
 			response.status(550);
 			response.body(Integer.toString(response.status()));
 			
-			e.printStackTrace();
+			Logger.logError(e, "Error in updateScore()", "General exception");
 			return response;
 		}
 	}
@@ -194,11 +198,14 @@ public class Game {
 		catch (IOException e){
 			response.status(555);
 			response.body(Integer.toString(response.status()));
+			response.body(Integer.toString(response.status()));
+			Logger.logError(e, "Error in createUser()", "IOException");
 			return response;
 		}
 		catch (Exception e){
 			response.status(550);
 			response.body(Integer.toString(response.status()));
+			Logger.logError(e, "Error in createUser()", "General exception");
 			return response;
 		}
 	}
