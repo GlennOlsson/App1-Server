@@ -15,7 +15,7 @@ class HTTP {
 			"name" : "INPUT_NAME"
 		}
 		 */
-		post("/App1/new", ((request, response) -> {
+		post("/new", ((request, response) -> {
 			System.out.println("/new : " + request.body());
 			JsonObject bodyObject = JSON.parseStringToJSON(request.body());
 			String name = bodyObject.get("name").getAsString();
@@ -34,7 +34,7 @@ class HTTP {
 			"score" : "NEW_SCORE"
 		}
 		 */
-		post("/App1/update", ((request, response) -> {
+		post("/update", ((request, response) -> {
 			try{
 				
 				System.out.println("/update : " + request.body());
@@ -59,7 +59,7 @@ class HTTP {
 			"token" : "TOKEN"
 		}
 		 */
-		post("/App1/start", (((request, response) -> {
+		post("/start", (((request, response) -> {
 			System.out.println("/start : " + request.body());
 			JsonObject bodyObject = JSON.parseStringToJSON(request.body());
 			String token = bodyObject.get("token").getAsString();
