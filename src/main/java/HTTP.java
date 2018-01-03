@@ -23,11 +23,9 @@ class HTTP {
 				String name = bodyObject.get("name").getAsString();
 				
 				response = Game.createUser(name, response);
-				
-				Logger.print("Responding with: " + response.status() + ", " + response.body());
 			}
 			catch (Exception e){
-				Logger.logError(e, "Error with /new", "Unknown error");
+				Logger.logError(e, "Error with /new", "Body of request was: " + request.body());
 				response.status(560);
 				response.body(Integer.toString(response.status()));
 			}
@@ -53,7 +51,7 @@ class HTTP {
 				response = Game.updateScore(token, score, response);
 			}
 			catch (Exception e){
-				Logger.logError(e, "Error with /update", "Unknown error");
+				Logger.logError(e, "Error with /update", "Body of request was: " + request.body());
 				response.status(560);
 				response.body(Integer.toString(response.status()));
 			}
@@ -75,11 +73,9 @@ class HTTP {
 				String token = bodyObject.get("token").getAsString();
 				
 				response = Game.startUpdate(token, response);
-				
-				Logger.print("Responding with: " + response.status() + ", " + response.body());
 			}
 			catch (Exception e){
-				Logger.logError(e, "Error with /start", "Unknown error");
+				Logger.logError(e, "Error with /start", "Body of request was: " + request.body());
 				response.status(560);
 				response.body(Integer.toString(response.status()));
 			}
