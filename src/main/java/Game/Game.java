@@ -109,9 +109,10 @@ public class Game {
 			int scoreOfUser = userOfToken.get("score").getAsInt();
 			
 			if(score <= scoreOfUser){
-				response.body(Highscore.getHighscore(token).toString());
 				response.status(201);
-				return response;
+			}
+			else{
+				response.status(200);
 			}
 			//Else
 			userOfToken.addProperty("score", score);
@@ -120,7 +121,6 @@ public class Game {
 			
 			saveToFile(beautyJSON, USERS_FILE);
 			
-			response.status(200);
 			response.body(Highscore.getHighscore(token).toString());
 			
 			return response;
