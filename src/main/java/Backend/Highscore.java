@@ -42,7 +42,7 @@ public class Highscore {
 				//Adding the highscore spot of the user to a key, so that user can easily be marked in the app
 				String tokenOfThisUser = thisUser.getToken();
 				if(tokenOfThisUser.equals(tokenOfUser)){
-					newObject.addProperty("thisUser", i);
+					newObject.addProperty("thisUserSpot", i);
 				}
 				
 				i++;
