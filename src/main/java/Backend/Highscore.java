@@ -65,6 +65,7 @@ public class Highscore {
 			
 		}
 		catch (Exception e){
+			Logger.logError(e, "Error in getHighscore()", "General exception");
 			return new JsonObject();
 		}
 	}
