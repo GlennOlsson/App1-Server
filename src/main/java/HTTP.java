@@ -30,7 +30,7 @@ class HTTP {
 				response.body(Integer.toString(response.status()));
 			}
 			
-			Logger.print("Responding with: " + response.status() + ", " + response.body());
+			Logger.print("Responding to /new with: " + response.status() + ", " + response.body());
 			
 			return response.body();
 		}));
@@ -56,7 +56,7 @@ class HTTP {
 				response.body(Integer.toString(response.status()));
 			}
 			
-			Logger.print("Responding with: " + response.status() + ", " + response.body());
+			Logger.print("Responding to /update with: " + response.status() + ", " + response.body());
 			
 			return response.body();
 		}));
@@ -80,7 +80,7 @@ class HTTP {
 				response.body(Integer.toString(response.status()));
 			}
 			
-			Logger.print("Responding with: " + response.status() + ", " + response.body());
+			Logger.print("Responding to /start with: " + response.status() + ", " + response.body());
 			
 			return response.body();
 		})));

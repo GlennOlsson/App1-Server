@@ -104,7 +104,7 @@ public class Game {
 				return response;
 			}
 			
-			Logger.print(userOfToken.toString());
+			Logger.print("User of token: " + userOfToken.toString());
 			
 			int scoreOfUser = userOfToken.get("score").getAsInt();
 			

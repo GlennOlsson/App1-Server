@@ -27,6 +27,7 @@ public class FileHandling {
 	public static void saveToFile(String content, String fileName){
 		try{
 			Files.write(Paths.get(getPath() + fileName), content.getBytes());
+			Logger.print("Successfully saved to file");
 		}
 		catch (Exception e){
 			System.err.println("Could not save file");
