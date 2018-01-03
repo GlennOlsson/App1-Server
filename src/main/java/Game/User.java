@@ -6,8 +6,9 @@ import com.google.gson.JsonObject;
 public class User implements Comparable<User>{
 	private String name;
 	private Integer score;
+	private String token;
 	
-	public User(String name, Integer score) {
+	public User(String name, Integer score, String token) {
 		this.name = name;
 		this.score = score;
 	}
@@ -15,6 +16,7 @@ public class User implements Comparable<User>{
 	public User(JsonObject object){
 		name = object.get("name").getAsString();
 		score = object.get("score").getAsInt();
+		token = object.get("token").getAsString();
 	}
 	
 	public String getName() {
@@ -23,6 +25,10 @@ public class User implements Comparable<User>{
 	
 	public Integer getScore() {
 		return score;
+	}
+	
+	public String getToken() {
+		return token;
 	}
 	
 	public int compareTo(User user){

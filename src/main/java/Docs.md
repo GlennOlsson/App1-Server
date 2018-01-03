@@ -1,4 +1,5 @@
 # JSON
+## Requests
 ### /new
 ```json
 {
@@ -20,8 +21,29 @@
 }
 ```
 
+## Response (at code = 2XX)
+### /new
+```json
+{
+  "name" : "YOUR_NICKNAME"
+}
+```
+### /update
+```json
+{
+  "token" : "TOKEN",
+  "score" : "NEW_SCORE"
+}
+```
 
-# Error codes
+### /start
+```json
+{
+  "token" : "TOKEN"
+}
+```
+
+# Status codes
 
 ## /new
 ### 200

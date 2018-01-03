@@ -55,7 +55,7 @@ public class Game {
 			saveToFile(beautyJSON, USERS_FILE);
 			
 			response.status(200);
-			response.body(Highscore.getHighscore().toString());
+			response.body(Highscore.getHighscore(token).toString());
 			
 			return response;
 			
@@ -109,7 +109,7 @@ public class Game {
 			int scoreOfUser = userOfToken.get("score").getAsInt();
 			
 			if(score <= scoreOfUser){
-				response.body(Highscore.getHighscore().toString());
+				response.body(Highscore.getHighscore(token).toString());
 				response.status(201);
 				return response;
 			}
@@ -121,7 +121,7 @@ public class Game {
 			saveToFile(beautyJSON, USERS_FILE);
 			
 			response.status(200);
-			response.body(Highscore.getHighscore().toString());
+			response.body(Highscore.getHighscore(token).toString());
 			
 			return response;
 		}
