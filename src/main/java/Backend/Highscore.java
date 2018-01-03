@@ -31,7 +31,7 @@ public class Highscore {
 			JsonArray newArray = new JsonArray();
 			
 			int i = 0;
-			while (i < 10 && i < users.size()) {
+			while (i <= 10 && i < users.size()) {
 				JsonObject thisUserObject = new JsonObject();
 				User thisUser = users.get(i);
 				thisUserObject.addProperty("name", thisUser.getName());
